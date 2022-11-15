@@ -1,6 +1,7 @@
 package com.atherenergyassignment.utils
 
 import android.util.Log
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -9,9 +10,6 @@ import java.util.*
     const val PATTERN_YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss"
     const val PATTERN_YYYY_MM_DD = "yyyy-MM-dd"
     const val PATTERN_DD_MM_YYYY = "dd-MM-yyyy"
-    const val DIGITAL_GOLD_FORMAT = "d MMM yyyy',' h:mm a"
-    const val FHCR_DATE_FORMAT = "dd-mm-yy"
-
     /**
      * @param currentDateTime= provide actul date to be parsed  ex.("30-07-2019 14:41:38")
      * @param currentDateTimeFormat= input date format ex. ("dd-MM-yyyy hh:mm:ss")
@@ -45,4 +43,12 @@ import java.util.*
              ""
         }
     }
+     fun getCurrentDateFull():String{
+         return try {
+             return DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().time)
+         }catch (e: Exception){
+             Log.d(DateUtil::class.java.simpleName,"Exception while parsing date")
+             ""
+         }
+     }
 }
